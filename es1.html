@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <body>
+        <div id="codCliente">codice cliente</div>
+        <div id="consumo">kw/h consumati</div>
+        <div id="costo">costo</div>
+        <div id="iva">iva</div>
+        <div id="canone">canone</div>
+        <tbody> 
+
+        </tbody>
+        
+        <table border="1px" id="tab"> 
+            <thead>
+                <tr> 
+                    <td><b>codice cliente</b></td>
+                    <td><input type ="number" id="codiceCliente"> </td>
+                </tr>
+
+                <tr><td><b>kw/h consumati</b></td>
+                    <td><input type ="number" id="Consumo"> </td>
+                </tr>
+
+                <tr>
+                    <td><b>costo kw/h</b></td>
+                    <td><input type="text" id="CostoKw" value="0.03"></td>
+                 </tr>
+
+                 <tr>
+                    <td><b>iva</b></td>
+                    <td><br><input type="text" id="Iva" value="22"></td>
+                </tr>
+
+                <tr> 
+                    <td><b>Canone</b></td>
+                    <td><br><input type="text" id="Canone" value="20"></td>
+                </tr>
+
+                <tr> 
+                    <td><button id="inserisci" onclick="inserisci()">inserisci</button></td>
+                    <td> <button id="calcola" onclick="calcola()">calcola</button></td>
+                </tr>
+                
+            </thead>
+            <tbody></tbody>
+        </table>
+                    
+            <script>
+               
+               let stringa;
+               tbody.innerHTML=stringa;
+                function inserisci(){
+                    let Codice=parseInt(document.getElementById("codiceCliente").value);
+                    let Consumo=parseInt(document.getElementById("Consumo").value);
+                    let Iva=parseFloat(document.getElementById("Iva").value);
+                    let Costokw=parseFloat(document.getElementById("CostoKw").value);
+                    let Canone=parseFloat(document.getElementById("Canone").value);
+
+                    if(isNaN(Codice))
+                        return alert("devi inserire un numero ");
+                    if(isNaN(Consumo))
+                        return alert("devi inserire un numero ");
+                    if(Codice<0)
+                        return alert("devi inserire un numero positivo");
+                    if(Consumo<0)
+                        return alert("devi inserire un numero positivo");
+                    
+                    
+                    const tr=document.createElement("tr");
+
+                    let consTot=Consumo*Costokw;
+                    let totIva=consTot*Iva;
+                    let tot=consTot+Canone+totIva;
+
+                    let t=document.getElementById("tab");
+                    let tbody=t.children[1];
+                    stringa+=`<tr><td>${Codice}</td>`;
+                    stringa+=`<td>${Consumo}*${Costokw}=${consTot.toFixed(2)}</td>`;
+                    stringa+=`<td>${Canone}</td>`;
+                    stringa+=`<td>${consTot}*${Iva*100}%=${totIva.toFixed(2)}</td>`;
+                    stringa+=`<td>${tot.toFixed(2)}€</td></tr>`;
+                    tbody.innerHTML=stringa;
+                    document.getElementById("codiceCliente").value="";
+                    document.getElementById("Consumo").value="";
+                
+                }
+
+
+
+
+            </script>
+
+</body>
+</html>
