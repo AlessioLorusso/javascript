@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Narr@zione</h1>
+    <form>
+        <div class="form-group">
+          <label for="autista"><b>autista</b></label><br>
+          <input type="text" class="form-control" id="autista" placeholder="SOGGETTO protagonista">
+        </div>
+        <div class="form-group">
+          <label for="destinazione"><b>destinazione</b></label><br>
+          <input type="text" class="form-control" id="destinazione" placeholder="OBIETTIVO da raggiungere">
+        </div>
+        <div class="form-group">
+          <label for="carburante"><b>carburante</b></label><br>
+          <input type="text" class="form-control" id="carburante" placeholder="MOTIVAZIONE che spinge verso l'obiettivo">
+        </div>
+        <div class="form-group">
+          <label for="luogo"><b>luogo</b></label><br>
+          <input type="text" class="form-control" id="luogo" placeholder="CONTESTO in cui si svolge l'azione">
+        </div>
+        <div class="form-group">
+          <label for="strada"><b>strada</b></label><br>
+          <input type="text" class="form-control" id="strada" placeholder="COMPORTAMENTO">
+        </div>
+        <div class="form-group">
+          <label for="stradaOk"><b>strada OK</b></label><br>
+          <input type="text" class="form-control" id="stradaOk" placeholder="COMPORTAMENTO ADEGUATO">
+        </div>
+        <div class="form-group">
+          <label for="stradaKo"><b> strada KO</b></label><br>
+          <input type="text" class="form-control" id="stradaKo" placeholder="COMPORTAMENTO INADEGUATO">
+        </div>
+        <div class="form-group">
+         <label for="cespugli"><b>cespugli</b></label><br>
+         <input type="text" class="form-control" id="cespugli" placeholder="FEEDBACK">
+        </div>
+        <div class="form-group">
+            <label for="lupo"><b>lupo</b></label><br>
+            <input type="int" class="form-control" id="lupo" placeholder="CONSEGUENZE NEGATIVE">
+        </div>
+        <div class="form-group">
+            <label for="cestino"><b>cestino</b></label><br> 
+            <input type="int" class="form-control" id="cestino" placeholder="ATTACCAMENTI DA LASCIARE">
+        </div>
+        <div class="form-group">
+            <label for="distanza"><b>distanza</b></label><br> 
+            <input type="int" class="form-control" id="distanza" placeholder="ins n da 1 a 5">
+        </div>
+    </form>
+    
+    <div class="container">
+        <div  id="imgno", hidden>
+            <img src="">
+        </div>
+        <div id="imgsi", hidden>
+            <img src="">
+        </div>
+    </div>
+
+    <div class="container">
+        <div  id="gifIntro">
+            <img src="https://lorussoalessio.altervista.org/javascript/navigazione/Intro.gif">
+        </div>
+    </div>
+
+    <div class="container">
+        <div  id="cest", hidden>
+            <img src="https://lorussoalessio.altervista.org/javascript/navigazione/cestino.gif">
+        </div>
+    </div>
+
+    <div class="container">
+        <div  id="manif", hidden>
+            <img src="https://lorussoalessio.altervista.org/javascript/navigazione/manifestare1.jpg">
+        </div>
+    </div>
+
+    <div class="container">
+        <div  id="lup", hidden>
+            <img src="https://lorussoalessio.altervista.org/javascript/navigazione/lupo1.gif">
+        </div>
+    </div>
+
+    <div class="container">
+        <div  id="noSost", hidden>
+            <img src="hhttps://lorussoalessio.altervista.org/javascript/navigazione/no_sostegno.gif">
+        </div>
+    </div>
+    
+    <div class="container">
+        <div  id="sost1", hidden>
+            <img src="https://lorussoalessio.altervista.org/javascript/navigazione/sostegno1.gif">
+        </div>
+    </div>
+
+    
+
+
+    <br>
+    <div class="container">
+        <div class = "row">
+            <button type="button" class = "btn btn-primary col-lg" onclick = "inizio()">Inizio</button>
+        </div>
+        <div class = "row">
+            <button type="button" class="btn btn-primary col-lg" onclick="btnSX()" id = "btnS", hidden></button>   
+            <button type="button" onclick="btnDX()" class="btn btn-primary col-lg" id = "btnD", hidden></button>
+        </div>
+    </div>
+
+        <p><button type="button" id="buttonInizio" class="btn btn-primary" onclick="inizio()">Inizio</button></p>
+        <p><button type="button" id="btnSx" onclick="btnSX()", hidden>SX</button>
+        <button type="button" id="btnDx" onclick="btnDX()", hidden>DX</button></p>
+        <textarea id="narrazione", cols="190", rows="30">
+        </textarea>
+
+    
+    
+    </body>
+
+    
+    
+
+    <script>
+    document.getElementById("distanza").value=3;
+    let contSi,dist,contNo, topolino, formaggio,fame,situazione,strada,stradaOk,stradaKo,testata,motivato,max;
+    function popup(pagina){
+        window.open(pagina, '', 'width=560,height=390,left=500,top=100,resizable=yes,toolbar=no,scrollbar=no,status=no');
+    }
+
+    
+    function inizio(){
+            if(document.getElementById("autista").value!="")
+                autista=document.getElementById("autista").value;
+            else
+                autista="autista";
+
+            if(document.getElementById("destinazione").value!="")
+                destinazione=document.getElementById("destinazione").value;
+            else
+                destinazione="destinazione";
+
+            if(document.getElementById("carburante").value!="")
+                carburante=document.getElementById("carburante").value;
+            else
+                carburante="carburante";
+
+            if(document.getElementById("luogo").value!="")
+                luogo=document.getElementById("luogo").value;
+            else
+                luogo="luogo";
+
+            if(document.getElementById("strada").value!="")
+                strada=document.getElementById("strada").value;
+            else
+                strada="strada";
+
+            if(document.getElementById("stradaOk").value!="")
+                stradaOk=document.getElementById("stradaOk").value;
+            else
+                stradaOk="stradaOk";
+
+            if(document.getElementById("stradaKo").value!="")
+                stradaKo=document.getElementById("stradaKo");
+            else
+                stradaKo="stradaKo";
+
+            if(document.getElementById("cespugli").value!="")
+                cespugli=document.getElementById("cespugli").value;
+            else
+                cespugli="cespugli";
+                
+            if(document.getElementById("lupo").value!="")
+                lupo=document.getElementById("lupo").value;
+            else
+                lupo="lupo";
+            
+            if(document.getElementById("cestino").value!="")
+                cestino=document.getElementById("cestino").value;
+            else
+                cestino="cestino";
+
+            if(document.getElementById("distanza").value!="")
+                distanza=document.getElementById("distanza").value;
+            else
+                distanza="distanza";
+                
+            document.getElementById("narrazione").value = "";
+
+            distanza=document.getElementById("distanza").value;
+            contSi=0;
+            if(distanza <1 || distanza>5)
+                distanza=document.getElementById("distanza").value = 3;
+            dist = distanza;
+            max = dist * 2;
+            document.getElementById("narrazione").value+="\n"+"Distanza iniziale dall'obiettivo "+dist+"\n";
+            document.getElementById("narrazione").scrollTop=document.getElementById("narrazione").scrollHeight;
+            document.getElementById("narrazione").value+="\n"+ autista+" vuoi raggiungere "+destinazione+"?";
+            document.getElementById("btnSx").innerText="no";
+            document.getElementById("btnSx").hidden=false;
+            document.getElementById("btnDx").innerText="si";
+            document.getElementById("btnDx").hidden=false;
+        }
+
+        function btnSX(){
+        if(contSi == 0){
+            document.getElementById("narrazione").value+=" NO! \n";
+            document.getElementById("narrazione").value+="\n"+"Mancando "+carburante+" per raggiungere " +destinazione+ ","+ autista+" nel contesto "+ luogo+ " non raggiungerai l'obiettivo !\n";
+            document.getElementById("narrazione").value+="\n"+autista+" vuoi raggiungere "+destinazione+"?";
+        }
+        else{
+        	 dist ++;
+             document.getElementById("narrazione").value+="\n" + autista+" la scelta "+stradaKo+" ti allontana da "+destinazione+"\n";
+             document.getElementById("narrazione").value+="\n distanza = (" + dist + ")\n"
+             document.getElementById("narrazione").value+="\n" + autista + " quale " + strada + " scegli? \n";  
+              if(dist >= max){
+            	document.getElementById("narrazione").value+="\n:-( ti sei allontanato troppo!!! ti scontri con "+lupo + "\n";
+            	popup("https://lorussoalessio.altervista.org/javascript/navigazione/Topolino_Tontolino.jpg");
+            }
+        }   
+    }
+
+    function btnDX(){
+        if(contSi == 0){
+                document.getElementById("narrazione").value+=" SI! \n";  
+                contSi++;   
+              
+        document.getElementById("btnSx").innerText="COMPORTAMENTO INADEGUATO";
+        document.getElementById("btnDx").innerText="COMPORTAMENTO ADEGUATO";
+        document.getElementById("narrazione").value+="\n" + autista + " quale " + strada + " scegli? \n";  
+        }
+        else{
+                dist --;
+                if(dist>=-1){
+                    document.getElementById("narrazione").value+="\n"+autista+" la scelta "+stradaOk+" ti avvicina a "+destinazione+"continua così!"+"\n";
+                    document.getElementById("narrazione").value+="\n distanza (" + dist +")\n";
+                    document.getElementById("narrazione").value+="\n" + autista + " quale " + strada + " scegli? \n";  
+      
+                }
+                if(dist == 0)
+                    document.getElementById("narrazione").value+="\nCoraggio ci sei quasi, fai un altro passo! \n";
+    
+                if(dist==-1){
+                    document.getElementById("narrazione").value+="\n:-) Complimenti, hai raggiunto l'obiettivo!!! \n";
+                    popup("https://lorussoalessio.altervista.org/javascript/navigazione/Topolino_Volpino.jpg");
+                }
+        }
+    }
+
+
+
+
+
+
+
+
+
+    </script>
+</html>
